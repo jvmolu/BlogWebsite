@@ -90,8 +90,13 @@ app.post('/compose', function(req,res){
       heading: req.body.Title,
       data: req.body.Post
     });
-    blogPost.save();
-    res.redirect('/');
+    blogPost.save(function(err){
+      if(!err)
+      {
+          res.redirect('/');
+      }
+    });
+
 });
 
 
